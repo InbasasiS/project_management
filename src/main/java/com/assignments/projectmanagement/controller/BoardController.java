@@ -1,5 +1,6 @@
 package com.assignments.projectmanagement.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class BoardController {
     private ProjectRepository projectRepository;
 
     @GetMapping("/board/{boardId}")
-    public Optional<Board> getProject(@PathVariable Long boardId) {
+    public Optional<Board> getBoard(@PathVariable Long boardId) {
         return boardRepository.findById(boardId);
     }
 
@@ -35,6 +36,11 @@ public class BoardController {
             board.setProject(project);
             return boardRepository.save(board);
         }).orElseThrow(() -> new NotFoundException());
+    }
+
+    @GetMapping("/board")
+    public List<Board> fetchAllBoards() {
+        return boardRepository.findAll();
     }
 
 }

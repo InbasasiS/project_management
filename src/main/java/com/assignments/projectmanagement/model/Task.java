@@ -49,7 +49,7 @@ public class Task {
     String label;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     @JsonIgnore
     User assignee;
 
@@ -58,7 +58,7 @@ public class Task {
     @JsonIgnore
     Board board;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sprint_id")
     @JsonIgnore
     Sprint sprint;
