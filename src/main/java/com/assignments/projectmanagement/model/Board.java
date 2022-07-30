@@ -36,12 +36,12 @@ public class Board implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    List<ProjectUser> owners;
+    List<User> owners;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<Sprint> sprints;
 
-    // @ManyToMany(mappedBy = "project_user_id")
-    // List<ProjectUser> projectUsers;
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<User> users;
 
 }

@@ -1,6 +1,5 @@
 package com.assignments.projectmanagement.model;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,14 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "sprints")
-public class Sprint {
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,17 +27,28 @@ public class Sprint {
     @Column(name = "name")
     String name;
 
-    @Column(name = "starts_at")
-    Date startsAt;
+    @Column(name = "role")
+    Role role;
 
-    @Column(name = "ends_at")
-    Date endsAt;
+    @Column(name = "status")
+    UserStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "board_id", nullable = false)
-    @JsonIgnore
     Board board;
 
-    @OneToMany(mappedBy = "sprint", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "assignee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<Task> tasks;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<Comment> comments;
+
+    public enum UserStatus {
+        ACTIVE, INACTIVE;
+    }
+
+    public enum Role {
+        DEV, QA, MANAGER, ADMIN;
+    }
+
 }
