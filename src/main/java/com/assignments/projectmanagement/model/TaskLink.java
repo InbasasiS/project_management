@@ -27,7 +27,7 @@ public class TaskLink {
     @JsonIgnore
     Task task;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "linked_task_id", nullable = false)
     @JsonIgnore
     Task linkedTask;

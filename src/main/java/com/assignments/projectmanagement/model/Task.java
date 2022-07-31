@@ -33,8 +33,12 @@ public class Task {
     @Column(name = "description")
     String description;
 
+    // Assumed the estimation in days
     @Column(name = "estimation")
     Integer estimation;
+
+    // Refers the total estimation including linked tasks
+    Integer totalEstination;
 
     @Column(name = "priority")
     Priority priority;

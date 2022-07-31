@@ -19,6 +19,7 @@ import com.assignments.projectmanagement.jpa.TaskRepository;
 import com.assignments.projectmanagement.jpa.UserRepository;
 import com.assignments.projectmanagement.model.Comment;
 import com.assignments.projectmanagement.model.Task;
+import com.assignments.projectmanagement.model.TaskLink;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -47,7 +48,15 @@ public class TaskController {
 
     @GetMapping(path = "/task/{taskId}")
     public Optional<Task> getTask(@PathVariable Long taskId) {
-        return taskRepository.findById(taskId);
+        Optional<Task> task = taskRepository.findById(taskId);
+        Integer totalEstimates = task.get().getEstimation(); // This includes the linked tasks estimates
+        if (task != null) {
+            for (TaskLink taskLink : task.get().getLinkedTasks()) {
+                totalEstimates += taskLink.getLinkedTask().getEstimation();
+            }
+            task.get().setTotalEstination(totalEstimates);
+        }
+        return task;
     }
 
     @PostMapping("/tasks/{taskId}/assign_task")
