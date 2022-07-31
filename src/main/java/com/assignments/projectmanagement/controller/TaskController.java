@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.assignments.projectmanagement.jpa.BoardRepository;
+import com.assignments.projectmanagement.jpa.CommentRepository;
 import com.assignments.projectmanagement.jpa.TaskRepository;
 import com.assignments.projectmanagement.jpa.UserRepository;
+import com.assignments.projectmanagement.model.Comment;
 import com.assignments.projectmanagement.model.Task;
 
 @RestController
@@ -27,6 +29,8 @@ public class TaskController {
     private BoardRepository boardRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CommentRepository commentRepository;
 
     @PostMapping("/board/{boardId}/task")
     public Task create(@PathVariable Long boardId, @RequestBody Task task) throws Exception {
@@ -54,6 +58,19 @@ public class TaskController {
                 task.setAssignee(user);
                 task.setAssigneeName(user.getName());
                 return taskRepository.save(task);
+            });
+        }).orElseThrow(() -> new NotFoundException());
+    }
+
+    @PostMapping("/tasks/{taskId}/comment")
+    public Optional<Comment> createComment(@RequestBody Comment comment, @PathVariable Long taskId,
+            @RequestParam(value = "user") Long userId)
+            throws Exception {
+        return taskRepository.findById(taskId).map(task -> {
+            return userRepository.findById(userId).map(user -> {
+                comment.setTask(task);
+                comment.setUser(user);
+                return commentRepository.save(comment);
             });
         }).orElseThrow(() -> new NotFoundException());
     }
