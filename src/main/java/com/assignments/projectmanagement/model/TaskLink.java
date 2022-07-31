@@ -33,7 +33,7 @@ public class TaskLink {
     Task linkedTask;
 
     @Column(name = "link_type")
-    LinkType linkType;
+    LinkType linkType = LinkType.RELATES_TO;
 
     public enum LinkType {
         PARENT_OF, CHILD_OF, BLOCKED_BY, BLOCKS, RELATES_TO, RELEASES, RELEASED_BY

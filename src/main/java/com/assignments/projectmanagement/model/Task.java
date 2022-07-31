@@ -48,18 +48,21 @@ public class Task {
     @Column(name = "label")
     String label;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "user_id", nullable = true)
     @JsonIgnore
     User assignee;
+
+    @Column(name = "assignee_name")
+    String assigneeName;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "board_id", nullable = false)
     @JsonIgnore
     Board board;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sprint_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "sprint_id", nullable = true)
     @JsonIgnore
     Sprint sprint;
 

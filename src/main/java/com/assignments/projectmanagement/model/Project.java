@@ -26,7 +26,7 @@ public class Project {
     private String title;
 
     @Column(name = "status")
-    private ProjectStatus status;
+    private ProjectStatus status = ProjectStatus.ACTIVE;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Board> boards;
