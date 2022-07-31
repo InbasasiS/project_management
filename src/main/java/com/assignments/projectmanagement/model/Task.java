@@ -19,6 +19,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
+// The Tasks belongs to Board
+// The Task is one to one mapping to assignee
+// The Task has many comments
+// The Task can be linked to other tasks
+// The Task may or may not be associated with a sprint
+
 @Entity
 @Data
 @Table(name = "tasks")

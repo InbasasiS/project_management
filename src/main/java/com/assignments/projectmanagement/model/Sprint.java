@@ -19,6 +19,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
+// The Sprint has many Tasks
+// The Sprint belongs to Board
+
 @Entity
 @Data
 @Table(name = "sprints")

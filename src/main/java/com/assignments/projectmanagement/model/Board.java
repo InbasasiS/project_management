@@ -19,6 +19,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
+// The Board belongs to Project
+// The Board has multiple sprints
+// The Board will have set of users, owners
+
 @Entity
 @Data
 @Table(name = "boards")

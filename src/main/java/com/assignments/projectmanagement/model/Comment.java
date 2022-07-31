@@ -14,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
+// Comments belongs to Task & User
+
 @Entity
 @Data
 @Table(name = "comments")

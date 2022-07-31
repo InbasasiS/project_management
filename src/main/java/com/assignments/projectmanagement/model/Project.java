@@ -14,6 +14,10 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+// The project refers the top level entity
+// Every project will have a one to many mapping to boards
+// Every project will have set of admins
+
 @Entity
 @Data
 @Table(name = "projects")

@@ -14,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
+// This refers the association between 2 different tasks
+
 @Entity
 @Data
 @Table(name = "task_links")

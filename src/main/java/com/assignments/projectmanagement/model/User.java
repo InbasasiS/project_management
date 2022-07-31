@@ -16,6 +16,9 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+// Currently, The user belongs to a board (Need to move them to a different model Team)
+// The User can have multiple tasks & comments
+
 @Entity
 @Data
 @Table(name = "users")
