@@ -31,9 +31,9 @@ public class User {
     Role role;
 
     @Column(name = "status")
-    UserStatus status;
+    UserStatus status = UserStatus.ACTIVE;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "board_id")
     Board board;
 
