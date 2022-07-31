@@ -2,6 +2,10 @@
 
 This is a simple project management application running in Java spring boot backed by Postgres.
 
+### LLD
+
+![Alt text](https://github.com/InbasasiS/project_management/blob/main/LLD.png?raw=true "Title")
+
 ## Quick Start Guide
 
 - Start the Postgres server,
