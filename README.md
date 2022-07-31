@@ -21,7 +21,7 @@ CREATE DATABASE project_management;
 
 - The Server will be running in post 8080
 
-## API Details
+### API Details
 
 ### Create a User,
 
